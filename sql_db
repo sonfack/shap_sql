@@ -1,6 +1,15 @@
 database=$1
+postgres=$2
+echo "Avez vous un mot de passe pour l'utilisateur $2 ?[o][n]" 
+read reponse 
+echo $reponse 
 for file in *.sql; do
 	name="${file%.*}.sql";
-	psql -h localhost -u postgres -W  -d $1 -f $name;  
+	if [ "$reponse" = "o" ]
+	then  
+		psql -h localhost -U $postgres -W  -d $1 -f $name;  
+	else 
+		psql -h localhost -U $postgres  -d $1 -f $name;  
+        fi 	
 done
 echo "Fin importation" 

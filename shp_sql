@@ -1,7 +1,8 @@
 SRID=$1
 for file in *.shp; do
 	name="${file%.*}";
-	echo "shp2pgsql -I -s $SRID $name.shp   $name  > $name.sql" >>run;  
+	echo "shp2pgsql -I -s $SRID $name.shp $name > $name.sql" >>run;  
 done
 chmod u+x run; 
 ./run
+rm run 
