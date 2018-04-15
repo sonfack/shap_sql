@@ -1,6 +1,6 @@
 database=$1
 for file in *.sql; do
 	name="${file%.*}.sql";
-	psql -u postgres  -d $1 -f $name;  
+	psql -h localhost -u postgres -W  -d $1 -f $name;  
 done
 echo "Fin importation" 
