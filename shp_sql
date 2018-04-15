@@ -1,5 +1,4 @@
 SRID=$1
-database=$2
 for file in *.shp; do
 	name="${file%.*}";
 	echo "shp2pgsql -I -s $SRID $name.shp   $name  > $name.sql" >>run;  
